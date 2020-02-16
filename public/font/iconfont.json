@@ -1,0 +1,58 @@
+{
+  "id": "1636855",
+  "name": "音乐",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "4681997",
+      "name": "历史记录",
+      "font_class": "lishijilu",
+      "unicode": "e702",
+      "unicode_decimal": 59138
+    },
+    {
+      "icon_id": "5858727",
+      "name": "叉",
+      "font_class": "close",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "3234740",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "5668315",
+      "name": "Parent_Clear",
+      "font_class": "clear",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "1980882",
+      "name": "播放箭头",
+      "font_class": "bofangjiantou",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "3200610",
+      "name": "播放",
+      "font_class": "bofang",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "523057",
+      "name": "icon-31-耳麦",
+      "font_class": "erji",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    }
+  ]
+}
