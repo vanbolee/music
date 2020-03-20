@@ -8,11 +8,9 @@ class Play extends Component {
   constructor(props) {
     super(props);
     this.radioTimeupdate = this.radioTimeupdate.bind(this);
-    this.radioCanplay = this.radioCanplay.bind(this);
     this.radioEnded = this.radioEnded.bind(this);
     this.state = {
       music: "", //播放地址
-      isReady: false, //首次加载成功开关
       isPlayEnd: false, //播放完毕开关
       isPlay: false, //是否能播放开关
       lrcCurrent: 0, //当前播放进度的高亮歌词索引
@@ -24,14 +22,12 @@ class Play extends Component {
       translateY: (this.refs.lyric.parentNode.offsetHeight / 5) * 2 + "px"
     });
     this.getMusic();
-    this.refs.audio.addEventListener("canplay", this.radioCanplay);
     this.refs.audio.addEventListener("ended", this.radioEnded);
     this.refs.audio.addEventListener("timeupdate", this.radioTimeupdate);
     this.getMusicDetail();
     this.getLyric();
   }
   componentWillUnmount() {
-    this.refs.audio.removeEventListener("canplay", this.radioCanplay);
     this.refs.audio.removeEventListener("ended", this.radioEnded);
     this.refs.audio.removeEventListener("timeupdate", this.radioTimeupdate);
   }
@@ -56,40 +52,37 @@ class Play extends Component {
     });
   }
   toPlayControl() {
-    if (this.state.isReady) {
-      if (!this.state.isPlay) {
-        this.setState(
-          {
-            isPlay: true
-          },
-          () => {
-            if (this.state.isPlayEnd) {
-              this.setState({
-                isPlayEnd: false
-              });
-              this.refs.audio.currentTime = 0;
-            }
-            try {
-              this.refs.audio.play();
-            } catch (error) {
-              console.log('----')
-              this.setState({
-                isPlay: false
-              })
-            }
+    if (!this.state.isPlay) {
+      this.setState(
+        {
+          isPlay: true
+        },
+        () => {
+          if (this.state.isPlayEnd) {
+            this.setState({
+              isPlayEnd: false
+            });
+            this.refs.audio.currentTime = 0;
           }
-        );
-      } else {
-        this.toSetRotateToParent(this.refs.turnParent, this.refs.turn);
-        this.setState(
-          {
-            isPlay: false
-          },
-          () => {
-            this.refs.audio.pause();
+          try {
+            this.refs.audio.play();
+          } catch (error) {
+            this.setState({
+              isPlay: false
+            });
           }
-        );
-      }
+        }
+      );
+    } else {
+      this.toSetRotateToParent(this.refs.turnParent, this.refs.turn);
+      this.setState(
+        {
+          isPlay: false
+        },
+        () => {
+          this.refs.audio.pause();
+        }
+      );
     }
   }
   toSetRotateToParent(parent, child) {
@@ -124,17 +117,6 @@ class Play extends Component {
     }
     //将最终的角度赋值给父级
     parent.style.transform = `rotate(${angle}deg)`;
-  }
-  radioCanplay() {
-    this.setState(
-      {
-        isPlay: true,
-        isReady: true
-      },
-      () => {
-        this.refs.audio.play();
-      }
-    );
   }
   radioEnded() {
     this.setState({
