@@ -14,7 +14,7 @@ export default {
     "/api": {
       // target: "http://musicapi.leanapp.cn/",
       // target: "https://music.linkorg.club/",
-      target: "http://47.100.45.234/",
+      target: "https://music.yutty.top/",
       changeOrigin: true,
       pathRewrite: { "^/api/": "" }
     }

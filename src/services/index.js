@@ -11,7 +11,7 @@ export async function getLatestMusic() {
   });
 }
 export async function getHotTopList() {
-  return request("/api/top/list?idx=1", {
+  return request("/api/top/list?id=3778678", {
     method: "get"
   });
 }
